@@ -1,0 +1,40 @@
+{
+  "mysql-bundle": {
+    "config": {
+      "canRetry": true,
+      "restoreNodeTimeout": 10000,
+      "defaultSelector": "RANDOM",
+      "templateDir": "mysql-bundle/sql"
+    },
+    "cluster": {
+      "alpha0": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "12345678",
+        "database": "alpha0"
+      },
+      "alpha1": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "12345678",
+        "database": "alpha1"
+      },
+      "beta0": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "12345678",
+        "database": "beta0"
+      },
+      "beta1": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "12345678",
+        "database": "beta1"
+      }
+    }
+  }
+}
