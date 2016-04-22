@@ -129,8 +129,9 @@ var rows2 = yield client.queryTemplate('upate_tab', ['a', 'b', 'c']);
 var rows3 = yield client.query(sql, map);
 var rows4 = yield client.queryTemplate('upate_tab_map', map);
 
-// 4. If there is a sub-dir in template dir such as ${template dir}/subdir, then the sql file under it can be access by
-// 'subdir.${name}'. For example: upate_tab_map.sql under  ${template dir}/subdir:
+// 4. If there is a sub-dir in template dir such as ${template dir}/subdir, 
+// then the sql file under it can be access by 'subdir.${name}'. 
+// For example: upate_tab_map.sql under  ${template dir}/subdir:
 
 var rows4 = yield client.queryTemplate('subdir.upate_tab_map', map)
 
