@@ -112,7 +112,7 @@ client.query(sql, ['a', 'b', 'c'], function(){});
 client.queryTemplate('upate_tab', ['a', 'b', 'c'], function(){});
 
 // 2. object/map format
-var sql = 'update `tab` set a = :a, b = :b', ::col_c = :c';
+var sql = 'update `tab` set a = :a, b = :b, ::col_c = :c';
 var map = {
     a: 'a',
     b: 'b',
