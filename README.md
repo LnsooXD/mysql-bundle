@@ -117,7 +117,8 @@ var map = {
     a: 'a',
     b: 'b',
     c: 'c',
-    col_c: 'c' // this var is start '::' not ':', that means , it's a col-name, will be wrap by `...` 
+    col_c: 'c' 
+    // the 'col_c' is start '::' not ':', that means , it's a col-name, will be wrap by `...` 
 };
 client.query(sql, map, function(){});
 // also, this sql can be put into a template file and well-formated. If it in upate_tab_map.sql
@@ -135,7 +136,7 @@ var rows4 = yield client.queryTemplate('upate_tab_map', map);
 
 var rows4 = yield client.queryTemplate('subdir.upate_tab_map', map)
 
-// This feature is design for easy modularization 
+// This feature is a simple modularized design.
 
 ```
 
