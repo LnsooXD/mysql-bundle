@@ -38,12 +38,14 @@ var userData = {
 
 // callback-like query vio template (name without suffix ".sql" )
 client.queryTemplate('insert_user_name', userData, function(err, rows){ ... });
-client.query('update `user` set `nickname` = :nickname, `username` = :username, `age` = :age', userData, function(err, rows){ ... });
+var sql = 'update `user` set `nickname` = :nickname, `username` = :username, `age` = :age'
+client.query(sql, userData, function(err, rows){ ... });
 
 // generator-supporting query
 co(function*(){
     var rows1 = yield coClient.queryTemplate('insert_user_name', userData);
-    var rows2 = yield client.query('update `user` set `nickname` = :nickname, `username` = :username, `age` = :age', userData);
+    var sql = 'update `user` set `nickname` = :nickname, `username` = :username, `age` = :age';
+    var rows2 = yield client.query(sql, userData);
 }).catch(function(err){ ... });
 ```
 
@@ -101,6 +103,40 @@ Every node in config['mysql-bundle']['cluster'] is the connection config. The de
 ###2. Sql File
 The default template dir is "mysql-bundle/sql", this can be configured by change the value of config['mysql-bundle']['config']['templateDir']. This value
 is relative to cwd. 
+###3 Template Formate
+```js
+// 1. array format, this is the same as node-mysql
+var sql = 'update `tab` set a = ?, b = ?, c = ?';
+client.query(sql, ['a', 'b', 'c'], function(){});
+// when sql content in template file upate_tab.sql under template dir
+client.queryTemplate('upate_tab', ['a', 'b', 'c'], function(){});
+
+// 2. object/map format
+var sql = 'update `tab` set a = :a, b = :b', ::col_c = :c';
+var map = {
+    a: 'a',
+    b: 'b',
+    c: 'c',
+    col_c: 'c' // this var is start '::' not ':', that means , it's a col-name, will be wrap by `...` 
+};
+client.query(sql, map, function(){});
+// also, this sql can be put into a template file and well-formated. If it in upate_tab_map.sql
+client.queryTemplate('upate_tab_map', map, function(){});
+
+// 3. all example above in generator 
+var rows1 = yield client.query(sql, ['a', 'b', 'c']);
+var rows2 = yield client.queryTemplate('upate_tab', ['a', 'b', 'c']);
+var rows3 = yield client.query(sql, map);
+var rows4 = yield client.queryTemplate('upate_tab_map', map);
+
+// 4. If there is a sub-dir in template dir such as ${template dir}/subdir, then the sql file under it can be access by
+// 'subdir.${name}'. For example: upate_tab_map.sql under  ${template dir}/subdir:
+
+var rows4 = yield client.queryTemplate('subdir.upate_tab_map', map)
+
+// This feature is design for easy modularization 
+
+```
 
 ##Authors
 
