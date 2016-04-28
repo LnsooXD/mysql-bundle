@@ -1,6 +1,6 @@
 {
   "name": "mysql-bundle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Mysql-bundle is extended from 'felixge/node-mysql' but more easy to use. Besides the basic functions of mysql, it has file template sql and ES5 generator supporting.",
   "author": "LnsooXD <lnsooxd@gmail.com>",
   "license": "MIT",
