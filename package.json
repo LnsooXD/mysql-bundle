@@ -40,8 +40,6 @@
     "LICENSE",
     "README.md",
     "mysql-bundle.js",
-    "lib",
-    "config",
-    "test"
+    "lib"
   ]
 }
