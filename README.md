@@ -1,5 +1,6 @@
+![Build Status](https://travis-ci.org/LnsooXD/mysql-bundle.svg)
 #mysql-bundle
-***
+===
 mysql-bundle is extended from [felixge/node-mysql] but more easy to use. Besides the basic functions of [mysql], it has file template sql and ES5 generator-supporting.
 
 ##Features

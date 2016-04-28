@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - '4'
+  - '5'
+  - '2'
+  - '1'
+  - '0.12'
+script: make test
+services:
+  - mysql
+before_script:
+  - mysql -e 'create database alpha0;'
+  - mysql -e 'create database alpha1;'
+  - mysql -e 'create database beta0;'
+  - mysql -e 'create database beta1;'

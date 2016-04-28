@@ -18,8 +18,7 @@
   ],
   "main": "mysql-bundle.js",
   "scripts": {
-    "test": "node ./test/test.js",
-    "testco": "node --harmony ./test/test-co.js"
+    "test": "make test"
   },
   "dependencies": {
     "co": "^4.6.0",
@@ -32,7 +31,10 @@
     "thunkify": "^2.1.2"
   },
   "devDependencies": {
-    "async": "^2.0.0-rc.3"
+    "async": "^2.0.0-rc.3",
+    "mocha": "^2.4.5",
+    "mocha-generators": "^1.2.0",
+    "should": "^8.3.1"
   },
   "files": [
     "LICENSE",
